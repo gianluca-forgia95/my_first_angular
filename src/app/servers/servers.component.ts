@@ -12,7 +12,11 @@ export class ServersComponent implements OnInit {
   serverCreationStatus = 'No server created'
   serverName = ""
   userName = ""
-
+  serverCreated = false
+  servers = ['testServer', 'testServer 2']
+  details = "pw is: 10732oghdfghgc"
+  clicks = []
+  showDetails = false
   constructor() { 
     setTimeout( () => {
       this.allowNewServer = true
@@ -24,6 +28,8 @@ export class ServersComponent implements OnInit {
   }
 
   onCreateServer() {
+    this.serverCreated = true
+    this.servers.push(this.serverName)
     this.serverCreationStatus = 'Server was created! Server name is: ' + this.serverName
   }
   onUpdateServerName( event: Event) {
@@ -32,6 +38,12 @@ export class ServersComponent implements OnInit {
 
   resetString() {
     this.userName = ""
+  }
+
+  toggleP(event: Event) {
+    this.clicks.push(event.type)
+    console.log(this.clicks)
+    return this.showDetails = !this.showDetails
   }
 
 }

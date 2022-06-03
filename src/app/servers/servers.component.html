@@ -10,16 +10,23 @@ class="form-control"
 >
 <p>{{ serverName }}</p>  -->
 
-<!-- <button class="btn btn-primary"
+ <!-- <button class="btn btn-primary"
 [disabled]="!allowNewServer"
 (click)="onCreateServer()"
->Add Server</button> -->
-<!-- <p [innerText]="allowNewServer"></p> -->
-<!-- <p>{{ serverCreationStatus}}</p> -->
-<!-- <app-server></app-server>
-<app-server></app-server> -->
+>Add Server</button>  -->
+<!-- <p [innerText]="allowNewServer"></p>
+<p>{{ serverCreationStatus}}</p> -->
+<!-- <p *ngIf="serverCreated; else noServer">Server Was created server name is: {{ serverName }}</p>
+<ng-template #noServer>
+    <p >No server was created</p>
+</ng-template> -->
 
-<label for="">Username</label>
+<!-- <app-server *ngFor="let server of servers">
+
+</app-server> -->
+
+
+<!-- <label for="">Username</label>
 <input type="text" 
 class="form-control"
 [(ngModel)]="userName"
@@ -32,4 +39,26 @@ class="btn btn-primary"
 (click)="resetString()"
 >
 Reset String
+</button> -->
+
+<button
+class="btn btn-primary"
+(click)="toggleP($event)"
+>
+    Display details
 </button>
+<div  *ngIf="showDetails; else noDetails">
+ <p>{{ details }}</p>
+<div *ngFor="let click of clicks; let c = index">
+  <span
+  [ngStyle]="{backgroundColor: c > 5 ? 'blue' : ''}"
+  [ngClass]="{white: c > 5}"
+  >
+  {{ click }}
+</span>
+</div> 
+</div>
+
+<ng-template #noDetails>
+  
+</ng-template>
